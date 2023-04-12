@@ -1,0 +1,42 @@
+button {
+  margin-left: 16px;
+}
+
+.container {
+  margin: 16px 16px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+}
+
+mat-icon:hover {
+  cursor: pointer;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: blue;
+}
+
+.buttons {
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+td {
+  padding: 16px;
+}
+
+.table__container {
+  max-height: 55vh;
+  overflow-y: scroll;
+}

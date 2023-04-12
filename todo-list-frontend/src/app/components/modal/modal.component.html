@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Agregar Tarea</h1>
+  <mat-form-field>
+    <mat-label>Título</mat-label>
+    <input matInput type="text" placeholder="Título" required [(ngModel)]="title">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <input matInput type="text" placeholder="Descripción" required [(ngModel)]="description"
+           [value]="data.description">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+</div>

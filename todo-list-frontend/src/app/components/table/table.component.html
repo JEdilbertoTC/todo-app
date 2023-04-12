@@ -1,0 +1,93 @@
+<div class="buttons">
+  <mat-form-field appearance="fill">
+    <mat-label>Buscador</mat-label>
+    <input matInput placeholder="Buscar" name="buscador" (keyup)="search()" [(ngModel)]="q">
+  </mat-form-field>
+
+  <mat-button-toggle-group>
+    <mat-button-toggle value="1" checked (click)="changeTasksStatus(1)">
+      Tareas completadas
+    </mat-button-toggle>
+
+    <mat-button-toggle value="0" (click)="changeTasksStatus(0)">
+      Tareas pendientes
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <button mat-raised-button color="primary" (click)="openModal()" *ngIf="this.selected == 0">Agregar tarea</button>
+  <button mat-raised-button color="warn" (click)="deleteAll()" *ngIf="this.selected == 1"
+          [disabled]="tasks.data.length == 0">Borrar todo
+  </button>
+</div>
+
+<div class="container">
+  <div class="table__container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #table matSort>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id</th>
+        <td mat-cell *matCellDef="let task"> {{task.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Título</th>
+        <td mat-cell *matCellDef="let task"> {{task.title}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción</th>
+        <td mat-cell *matCellDef="let task"> {{task.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="created_at">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de creación</th>
+        <td mat-cell *matCellDef="let task"> {{task.created_at | date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="updated_at">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ultima actualización</th>
+        <td mat-cell *matCellDef="let task"> {{task.updated_at | date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let task">
+
+          <div class="actions">
+            <mat-icon aria-hidden="false" (click)="delete(task.id)" color="warn">delete</mat-icon>
+            <mat-icon aria-hidden="false" class="blue" *ngIf="task.is_completed != true"
+                      (click)="openModal(task.title, task.description, task.id)">edit
+            </mat-icon>
+            <mat-icon aria-hidden="false" *ngIf="task.is_completed != true" class="green"
+                      (click)="markCompleted(task.id)">checked
+            </mat-icon>
+
+          </div>
+        </td>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+  </div>
+
+  <mat-toolbar>
+  <span class="responsive-view margin-for-mobile">
+    <button (click)="getFirstPage()" [disabled]="tasks.data.length === 0 || tasks.current_page === 1">
+      <i class="material-icons">first_page</i>
+    </button>
+        <button (click)="getPreviousPage()" [disabled]="tasks.data.length === 0 || tasks.current_page === 1">
+          <i class="material-icons">chevron_left</i>
+        </button>
+        <button (click)="getNextPage()" [disabled]="tasks.data.length === 0 || tasks.to >= tasks.total">
+          <i class="material-icons">chevron_right</i>
+        </button>
+    <button matTooltip="Info about the action"
+            (click)="getLastPage()" [disabled]="tasks.data.length === 0 || tasks.to >= tasks.total">
+      <i class="material-icons">last_page</i>
+    </button>
+  </span>
+  </mat-toolbar>
+
+</div>

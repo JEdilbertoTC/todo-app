@@ -1,0 +1,37 @@
+mat-form-field {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-icon {
+  margin-left: 6px;
+}
+
+.auth {
+  display: flex;
+  flex-direction: row;
+}
+
+a {
+  text-decoration: none;
+  margin-left: 6px;
+  color: blue;
+}
+
+.error {
+  margin-top: 16px;
+  color: red;
+}

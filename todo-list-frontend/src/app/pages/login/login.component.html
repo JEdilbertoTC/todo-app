@@ -1,0 +1,24 @@
+<div class="container" *ngIf="!isLogged">
+  <form>
+    <h1>Login</h1>
+    <mat-form-field appearance="fill">
+      <mat-label>Correo electronico</mat-label>
+      <input matInput placeholder="Escribe tu correo electrónico" name="email" [(ngModel)]="email">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput placeholder="Escribe tu contraseña" value="" name="password" type="password"
+             [(ngModel)]="password">
+    </mat-form-field>
+    <div class="auth">
+      <button mat-raised-button color="primary" (click)="login()">
+        <div class="button">
+          Entrar
+          <mat-icon aria-hidden="false">login</mat-icon>
+        </div>
+      </button>
+      <a [routerLink]="['/register']">Crear una cuenta</a>
+    </div>
+    <div class="error" *ngIf="showErrors">Correo electrónico o contraseña erronea</div>
+  </form>
+</div>

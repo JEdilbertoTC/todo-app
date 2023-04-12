@@ -1,0 +1,52 @@
+mat-form-field {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-icon {
+  margin-left: 6px;
+}
+
+.auth {
+  display: flex;
+  flex-direction: row;
+}
+
+.auth .session {
+  color: blue;
+  margin-left: 4px;
+}
+
+.auth .session:hover {
+  cursor: pointer;
+}
+
+.error {
+  margin-top: 16px;
+  color: red;
+}
+
+span {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin-left: 6px;
+}
+
+a {
+  text-decoration: none;
+  margin-left: 6px;
+}
